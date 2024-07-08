@@ -1,6 +1,8 @@
 FROM amazon/aws-lambda-python:3.9
 
 RUN /var/lang/bin/python3.9 -m pip install --upgrade pip
+RUN yum install -y java-1.8.0-openjdk-devel
+RUN /var/lang/bin/pip install JPype1==1.3.0
 
 RUN yum install git -y
 
