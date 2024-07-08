@@ -5,7 +5,7 @@ from konlpy.tag import Okt
 import json
 
 # 저장된 모델과 매핑 로드
-with open('model_and_mapping_0623.pkl', 'rb') as f:
+with open('var/task/model_and_mapping_0623.pkl', 'rb') as f:
     saved_data = dill.load(f,encoding='utf-8')
 
 bf = saved_data['bayesian_filter']
