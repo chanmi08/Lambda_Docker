@@ -3,7 +3,7 @@ import sys
 import math
 from konlpy.tag import Okt
 import json
-
+okt = Okt()
 # 저장된 모델과 매핑 로드
 with open('model_and_mapping_0623.pkl', 'rb') as f:
     data = dill.load(f)
