@@ -5,11 +5,10 @@ from konlpy.tag import Okt
 import json
 
 # 저장된 모델과 매핑 로드
-with open('var/task/model_and_mapping_0623.pkl', 'rb') as f:
-    saved_data = dill.load(f,encoding='utf-8')
-
-bf = saved_data['bayesian_filter']
-keyword_to_category = saved_data['keyword_to_category']
+with open('model_and_mapping_0623.pkl', 'rb') as f:
+    data = dill.load(f)
+    bf = data['bayesian_filter']
+    keyword_to_category = data['keyword_to_category']
 
 # 로드된 객체를 사용하여 텍스트 분류 함수 정의
 def classify_text(text):
