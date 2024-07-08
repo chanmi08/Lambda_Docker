@@ -4,21 +4,21 @@ import math
 from konlpy.tag import Okt
 import json
 
-# ÀúÀåµÈ ¸ğµ¨°ú ¸ÅÇÎ ·Îµå
+# ì €ì¥ëœ ëª¨ë¸ê³¼ ë§¤í•‘ ë¡œë“œ
 with open('model_and_mapping_0623.pkl', 'rb') as f:
-    saved_data = dill.load(f)
+    saved_data = dill.load(f,encoding='utf-8')
 
 bf = saved_data['bayesian_filter']
 keyword_to_category = saved_data['keyword_to_category']
 
-# ·ÎµåµÈ °´Ã¼¸¦ »ç¿ëÇÏ¿© ÅØ½ºÆ® ºĞ·ù ÇÔ¼ö Á¤ÀÇ
+# ë¡œë“œëœ ê°ì²´ë¥¼ ì‚¬ìš©í•˜ì—¬ í…ìŠ¤íŠ¸ ë¶„ë¥˜ í•¨ìˆ˜ ì •ì˜
 def classify_text(text):
     text = text.lower()
     for keyword, category in keyword_to_category.items():
         if keyword in text:
-            return category  # Å°¿öµå°¡ ÅØ½ºÆ®¿¡ ÀÖÀ¸¸é ÇØ´ç Ä«Å×°í¸® ¹İÈ¯
+            return category  # í‚¤ì›Œë“œê°€ í…ìŠ¤íŠ¸ì— ìˆìœ¼ë©´ í•´ë‹¹ ì¹´í…Œê³ ë¦¬ ë°˜í™˜
 
-    # Å°¿öµå°¡ ¾ø´Ù¸é ¸Ó½Å·¯´× ¸ğµ¨·Î Ä«Å×°í¸®¸¦ ¿¹Ãø
+    # í‚¤ì›Œë“œê°€ ì—†ë‹¤ë©´ ë¨¸ì‹ ëŸ¬ë‹ ëª¨ë¸ë¡œ ì¹´í…Œê³ ë¦¬ë¥¼ ì˜ˆì¸¡
     return bf.predict(text)
 
 def handler(event, context):
