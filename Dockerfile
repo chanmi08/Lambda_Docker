@@ -6,6 +6,8 @@ RUN /var/lang/bin/pip install JPype1==1.3.0
 
 RUN yum install git -y
 
+RUN /var/lang/bin/pip install konlpy
+
 RUN git clone https://github.com/chanmi08/Lambda_Docker.git
 
 RUN pip install -r Lambda_Docker/requirements.txt
