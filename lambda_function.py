@@ -18,7 +18,8 @@ def classify_text(text):
             return category  # 키워드가 텍스트에 있으면 해당 카테고리 반환
 
     # 키워드가 없다면 머신러닝 모델로 카테고리를 예측
-    return bf.predict(text)
+    predicted_category, _ = bf.predict(text)
+    return predicted_category
 
 def handler(event, context):
     body = event["body-json"]
