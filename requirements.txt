@@ -1,2 +1,4 @@
 dill
 konlpy
+pandas
+openpyxl
