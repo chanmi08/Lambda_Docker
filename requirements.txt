@@ -1,4 +1,3 @@
 dill
 konlpy
 pandas
-openpyxl
