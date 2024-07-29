@@ -1,7 +1,7 @@
 FROM amazon/aws-lambda-python:3.9
 
 RUN /var/lang/bin/python3.9 -m pip install --upgrade pip
-RUN apt-get update && apt-get install -y default-jre
+RUN yum update -y && yum install -y java-1.8.0-openjdk
 
 RUN yum install git -y
 RUN git clone https://github.com/chanmi08/Lambda_Docker.git
