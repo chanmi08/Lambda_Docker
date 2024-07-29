@@ -1,13 +1,11 @@
 FROM amazon/aws-lambda-python:3.9
 
 RUN /var/lang/bin/python3.9 -m pip install --upgrade pip
-RUN yum install -y java-1.8.0-openjdk-devel
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk
-RUN /var/lang/bin/pip install JPype1==1.3.0
+RUN apt-get update && apt-get install -y default-jre
 
 RUN yum install git -y
 RUN git clone https://github.com/chanmi08/Lambda_Docker.git
-RUN pip install -r Lambda_Docker/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r Lambda_Docker/requirements.txt
 
 RUN cp Lambda_Docker/lambda_function.py /var/task/
 RUN cp Lambda_Docker/model_and_mapping_0725.pkl /var/task/
